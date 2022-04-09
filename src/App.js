@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUp from './pages/signUp'
+import MainScreen from './pages/mainScreen';
+import ErrorPage from './pages/errorPage/Index';
+import Modal from 'react-modal';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+ 
+Modal.setAppElement('#root')
 
 function App() {
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='  '>
+        <Routes>
+          <Route path="/" element={<MainScreen />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

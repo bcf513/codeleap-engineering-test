@@ -1,0 +1,5 @@
+export const USER_LOGIN = "userLogin"
+export const USER_LOGOUT = "userLogout"
+export const CREATE_POST = "createPost"
+export const EDIT_POST = "editPost"
+export const DELETE_POST = "deletePost"
