@@ -1,0 +1,40 @@
+
+.userpost {
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(182, 182, 182);
+    border-radius: 10px;
+}
+
+.postTitle {
+    background-color: black;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.postTitle h1 {
+    color: white;
+    margin: 0px;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.post_content {
+    margin: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.username_and_created_datetime {
+    display: flex;
+    justify-content: space-between;
+    color: grey;
+}
+
+.post_content p {
+    margin: 0;
+}

@@ -1,3 +1,4 @@
+import './style.css'
 import React from 'react'
 import Modal from 'react-modal/lib/components/Modal'
 import { useNavigate } from 'react-router-dom';
@@ -19,16 +20,36 @@ function NavBar() {
         store.dispatch(userLogout())
         navigate("/signup")
     }
+    
+    const modalStyle = {
+        content: { 
+            height: 'fit-content',
+            maxWidth: '500px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
+    }
 
     return (
         <nav>
-            <p>Welcome, 'username'!</p>
-            <button onClick={handleEditModal}>Logout</button>
+            <div id='navBarContent'>
+                <h1>CodeLeap Network</h1>
+                <div className="greetings_and_logout_button">
+                    <p>Welcome, {store.getState().loggedIn}!</p>
+                    <button onClick={handleEditModal}>Logout</button>
+                </div>
+            </div>
             <Modal isOpen={isLogoutModalOpen}
-                onRequestClose={handleEditModal}>
-                <p>Are you sure you want to logout?</p>
-                <button onClick={handleEditModal}>CANCEL</button>
-                <button onClick={handleLogout}>LOGOUT</button>
+                onRequestClose={handleEditModal}
+                style={modalStyle}>
+                <div className="modal">
+                    <h1>Logout</h1>
+                    <p>Are you sure you want to logout?</p>
+                    <div className="buttons">
+                        <button onClick={handleEditModal}>CANCEL</button>
+                        <button onClick={handleLogout}>LOGOUT</button>
+                    </div>
+                </div>
             </Modal>
         </nav>
     )

@@ -1,3 +1,4 @@
+import './style.css'
 import CustomButton from '../../components/customButton'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -16,17 +17,19 @@ function SignUp() {
     }
 
     return (
-        <div className='signUpExternalBox'>
-            <h1>Welcome to CodeLeap network!</h1>
-            <p>Please enter your username:</p>
-            <input type="text" 
-                placeholder='Your username here'
-                onChange={e => setusernameString(e.target.value)}
-            />
-            <CustomButton text='ENTER'
-                inputsToFill={[usernameString]}
-                handleButtonClick={handleLogin}
-            />
+        <div className="signUpPage">
+            <div className='signUpExternalBox'>
+                <h1>Welcome to CodeLeap network!</h1>
+                <p>Please enter your username:</p>
+                <input type="text" 
+                    placeholder='Your username here'
+                    onChange={e => setusernameString(e.target.value)}
+                />
+                <CustomButton text='ENTER'
+                    inputsToFill={[usernameString]}
+                    handleButtonClick={handleLogin}
+                />
+            </div>
         </div>
     )
 }

@@ -2,12 +2,14 @@ import * as actions from "../../actions/actionTypes"
 
 let lastId = 1
 
-export function postListReducer(state = [], action) {
+export function postList(state = [], action) {
     switch (action.type) {
         case actions.CREATE_POST:
-            return [...state, {...action.post, id: lastId++}]
+            return [{...action.post, id: lastId++}, ...state]
         case actions.EDIT_POST:
-            return [...state.map(post => post.id === action.post.id ? {...action.post} : post)]
+            const newState = [...state.filter(post => post.id !== action.post.id)]
+            return [{...action.post}, ...newState]
+            //return [...state.map(post => post.id === action.post.id ? {...action.post} : post)]
         case actions.DELETE_POST:
             return [...state.filter(post => post.id !== action.id)]
         default:
@@ -16,23 +18,12 @@ export function postListReducer(state = [], action) {
     
 }
 
-const initialState = {
-    loggedIn: false,
-    username: undefined
-}
-
-export const userReducer = (state = initialState, action) => {
+export const loggedIn = (state = null, action) => {
     switch(action.type) {
         case actions.USER_LOGIN:
-            return {
-                loggedIn: true,
-                username: action.username
-            }
+            return action.username
         case actions.USER_LOGOUT:
-            return {
-                loggedIn: false,
-                username: undefined
-            }
+            return null
         default:
             return state
     }

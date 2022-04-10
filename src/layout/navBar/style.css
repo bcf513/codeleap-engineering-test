@@ -1,0 +1,59 @@
+
+nav {
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+#navBarContent { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.greetings_and_logout_button {
+    display: flex;
+    margin: auto;
+}
+
+nav p, nav h1 {
+    color: white;
+}
+
+nav p {
+    padding: 10px;
+}
+
+nav h1 {
+    margin: auto;
+}
+
+nav button {
+    background:none;
+    border: none;
+    margin:10px;
+    padding:10px;
+    cursor: pointer;
+    color: white;
+}
+
+.modal {
+
+    display: grid;
+    gap: 20px
+}
+
+.modal h1, .modal p {
+    margin: 0;
+}
+
+.buttons {
+    margin-left: auto;
+    margin-right: 0;  
+    display: flex;
+    gap: 10px;
+}
+
+.buttons button {
+    height: 30px;
+}

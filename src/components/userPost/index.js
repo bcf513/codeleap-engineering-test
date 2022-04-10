@@ -1,27 +1,28 @@
+import './style.css'
 import moment from 'moment'
 
-function UserPost({postkey, post, currentUserName, handleEditModal, handleDeleteModal}) {
+function UserPost({post, currentUserName, handleEditModal, handleDeleteModal}) {
 
-    const {title, username, postDate, content} = post
-
-    console.log('Post', title)
+    const {id, title, username, created_datetime, content} = post
 
     return (
-        <div id='userpost'>
-            <div>
+        <div className='userpost'>
+            <div className='postTitle'>
                 <h1>{title}</h1>
                 {(username === currentUserName) && 
-                    <div>
-                        <button onClick={() => handleEditModal(postkey)}>EDIT</button>
-                        <button onClick={() => handleDeleteModal(postkey)}>DELETE</button>
+                    <div className='edit_delete_buttons'>
+                        <button onClick={() => handleEditModal(id)}>EDIT</button>
+                        <button onClick={() => handleDeleteModal(id)}>DELETE</button>
                     </div>
                 }
             </div>
-            <div>
-                <p>@{username}</p>
-                <p>{moment(postDate).fromNow()}</p>
+            <div className='post_content'>
+                <div className='username_and_created_datetime'>
+                    <p>@{username}</p>
+                    <p>{moment(created_datetime).fromNow()}</p>
+                </div>
+                <p>{content}</p>
             </div>
-            <p>{content}</p>
         </div>
     )
 }

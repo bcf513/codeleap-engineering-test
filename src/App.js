@@ -8,20 +8,9 @@ Modal.setAppElement('#root')
 
 function App() {
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-
   return (
     <Router>
-      <div className='  '>
+      <div className='app'>
         <Routes>
           <Route path="/" element={<MainScreen />} />
           <Route path="/signup" element={<SignUp />} />

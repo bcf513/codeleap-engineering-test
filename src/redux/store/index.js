@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
-import { userReducer, postListReducer } from "../reducer";
+import { loggedIn, postList } from "../reducer";
 
-const store = createStore(combineReducers({userReducer, postListReducer}))
+const store = createStore(combineReducers({loggedIn, postList}))
 
 export default store
