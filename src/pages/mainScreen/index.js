@@ -59,8 +59,6 @@ function MainScreen() {
             marginLeft: 'auto',
             marginRight: 'auto',
             borderRadius: '10px',
-            display: 'flex',
-            justifyContent: 'center',
             alignSelf: 'center'
         },
         overlay: {
