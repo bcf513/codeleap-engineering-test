@@ -18,7 +18,9 @@ function CreatePost({currentUserName, setvisiblePosts}) {
                 content: contentString
             })
         )        
-        setvisiblePosts([...store.getState().postList])
+        const storePostList = [...store.getState().postList]
+        const postListSorted = [...storePostList.sort((a, b) => b.created_datetime - a.created_datetime)]
+        setvisiblePosts(postListSorted)
         settitleString('')
         setcontentString('')
     }

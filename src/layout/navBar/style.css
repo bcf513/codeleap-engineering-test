@@ -1,44 +1,52 @@
 
 nav {
+    align-self: center;
     background-color: black;
+    display: grid;
+    min-height: 60px;
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
 }
 
 #navBarContent { 
-    display: flex;
-    justify-content: space-between;
-}
-
-.greetings_and_logout_button {
-    display: flex;
-    margin: auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 nav p, nav h1 {
     color: white;
+    text-align: center;
 }
 
 nav p {
-    padding: 10px;
+    align-self: center;
+    display: flex;
+    margin: 10px 20px;
+    padding: 0px;
 }
 
 nav h1 {
-    margin: auto;
+    align-self: center;
+    margin: 10px auto;
 }
 
 nav button {
+    align-self: center;
     background:none;
-    border: none;
-    margin:10px;
-    padding:10px;
-    cursor: pointer;
+    border-color: white;    
+    border-radius: 10px;
+    border-width: 1px;
     color: white;
+    cursor: pointer;
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+    padding:10px;
 }
 
 .modal {
-
     display: grid;
     gap: 20px
 }
@@ -48,10 +56,10 @@ nav button {
 }
 
 .buttons {
-    margin-left: auto;
-    margin-right: 0;  
     display: flex;
     gap: 10px;
+    margin-left: auto;
+    margin-right: 0;  
 }
 
 .buttons button {

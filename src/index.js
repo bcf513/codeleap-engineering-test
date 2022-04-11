@@ -1,11 +1,14 @@
 import './index.css';
 import App from './App';
 import {createRoot} from 'react-dom/client';
-import { createPost, userLogin } from "./actions/actions"
+import { createPost } from "./actions/actions"
 import store from './redux/store';
 
 const unsubscribe = store.subscribe(() => {
     console.log("Store changed!", store.getState())
+    console.log("postList!", store.getState().postList)
+    //console.log("loggedIn", store.getState().loggedIn)
+
 })
 store.dispatch(createPost({
     title: 'Possdatao',
@@ -19,7 +22,6 @@ store.dispatch(createPost({
     created_datetime: 1649297166322,
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, error animi facere officia iste consectetur nesciunt, doloremque rem voluptatibus sit tempora dolores, impedit ipsa nisi!'
 }))
-store.dispatch(userLogin("Brunin"))
 
 const root = createRoot(document.getElementById('root'))
 root.render(<App />)

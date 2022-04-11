@@ -13,7 +13,7 @@ function SignUp() {
 
     const handleLogin = () => {
         store.dispatch(userLogin(usernameString))
-        navigate("/")
+        navigate("/main")
     }
 
     return (

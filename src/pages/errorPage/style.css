@@ -1,0 +1,51 @@
+
+.errorPage {
+    background-color: #dfdfdf;
+
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    
+    top: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.errorMessage {
+    background-color: white;
+
+    border-color: rgb(182, 182, 182);
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+
+    box-shadow: 5px 5px 10px grey;
+
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 20px;
+
+    width: fit-content;
+}
+
+.errorMessage p, .errorMessage h1, .errorMessage h2 {
+    margin: 0px auto;
+    padding: 0px;
+    
+    height: fit-content;
+    width: fit-content;
+}
+
+.errorMessage button {
+    background-color: black;
+    color: white;
+
+    border-radius: 10px;
+    margin: auto;
+
+    height: 30px;
+    width: 100px;
+}

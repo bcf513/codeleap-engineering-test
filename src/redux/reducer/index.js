@@ -5,11 +5,11 @@ let lastId = 1
 export function postList(state = [], action) {
     switch (action.type) {
         case actions.CREATE_POST:
-            return [{...action.post, id: lastId++}, ...state]
+            return [...state, {...action.post, id: lastId++}]
         case actions.EDIT_POST:
-            const newState = [...state.filter(post => post.id !== action.post.id)]
-            return [{...action.post}, ...newState]
-            //return [...state.map(post => post.id === action.post.id ? {...action.post} : post)]
+            //const newState = [...state.filter(post => post.id !== action.post.id)]
+            //return [{...action.post}, ...newState]
+            return [...state.map(post => post.id === action.post.id ? {...action.post} : post)]
         case actions.DELETE_POST:
             return [...state.filter(post => post.id !== action.id)]
         default:

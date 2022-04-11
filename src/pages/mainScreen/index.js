@@ -25,7 +25,9 @@ function MainScreen() {
             content: editContent
         }
         store.dispatch(editPost(post))
-        setvisiblePosts([...store.getState().postList])
+        const storePostList = [...store.getState().postList]
+        const postListSorted = [...storePostList.sort((a, b) => b.created_datetime - a.created_datetime)]
+        setvisiblePosts(postListSorted)
         setisEditModalOpen(false)
     }
 
@@ -39,7 +41,6 @@ function MainScreen() {
         setisEditModalOpen(isEditModalOpen ? false : true)
         if (!isEditModalOpen) {
             const post = visiblePosts.find(post => post.id === id)
-            console.log(post)
             seteditTitle(post.title)
             seteditContent(post.content)
             setcurrentPost(id)
@@ -57,13 +58,20 @@ function MainScreen() {
             maxWidth: '500px',
             marginLeft: 'auto',
             marginRight: 'auto',
-            borderRadius: '10px'
+            borderRadius: '10px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignSelf: 'center'
+        },
+        overlay: {
+            zIndex: 1000
         }
+
     }
 
     return (
         <main>
-            <NavBar />
+                <NavBar />
             <div className='mainScreen'>
                 <CreatePost currentUserName={store.getState().loggedIn} 
                     setvisiblePosts={setvisiblePosts}/>

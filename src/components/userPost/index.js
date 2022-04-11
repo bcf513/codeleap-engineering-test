@@ -1,5 +1,7 @@
 import './style.css'
 import moment from 'moment'
+import { FiEdit } from 'react-icons/fi'
+import { BsTrash } from 'react-icons/bs'
 
 function UserPost({post, currentUserName, handleEditModal, handleDeleteModal}) {
 
@@ -11,8 +13,8 @@ function UserPost({post, currentUserName, handleEditModal, handleDeleteModal}) {
                 <h1>{title}</h1>
                 {(username === currentUserName) && 
                     <div className='edit_delete_buttons'>
-                        <button onClick={() => handleEditModal(id)}>EDIT</button>
-                        <button onClick={() => handleDeleteModal(id)}>DELETE</button>
+                        <button onClick={() => handleEditModal(id)}><FiEdit size={20} /></button>
+                        <button onClick={() => handleDeleteModal(id)}><BsTrash size={20} /></button>
                     </div>
                 }
             </div>
