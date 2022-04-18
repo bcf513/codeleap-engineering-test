@@ -1,8 +1,7 @@
 
 .errorPage {
-    background-color: #dfdfdf;
-
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     justify-content: center;
     
@@ -21,7 +20,8 @@
 
     box-shadow: 5px 5px 10px grey;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     justify-content: center;
     gap: 5px;

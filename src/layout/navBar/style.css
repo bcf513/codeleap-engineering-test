@@ -2,17 +2,12 @@
 nav {
     align-self: center;
     background-color: black;
-    display: grid;
+    display: flex;
+    gap: 10px;
     min-height: 60px;
     position: fixed;
     top: 0;
     width: 100%;
-}
-
-#navBarContent { 
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 nav p, nav h1 {
@@ -20,9 +15,16 @@ nav p, nav h1 {
     text-align: center;
 }
 
-nav p {
-    align-self: center;
+nav > * {
+    flex-basis: 100%;
+}
+
+.usernameLogin {
     display: flex;
+    align-self: center;
+}
+
+.usernameLogin p {
     margin: 10px 20px;
     padding: 0px;
 }
@@ -30,6 +32,11 @@ nav p {
 nav h1 {
     align-self: center;
     margin: 10px auto;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
 }
 
 nav button {
@@ -47,7 +54,8 @@ nav button {
 }
 
 .modal {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 20px
 }
 

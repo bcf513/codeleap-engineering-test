@@ -32,9 +32,11 @@ function NavBar() {
 
     return (
         <nav>
-            <div id='navBarContent'>
+            <div className="usernameLogin">
                 <p>Welcome, {store.getState().loggedIn}!</p>
-                <h1>CodeLeap Network</h1>
+            </div>
+            <h1>CodeLeap Network</h1>
+            <div className="logoutButton">
                 <button onClick={handleEditModal}>Logout</button>
             </div>
             <Modal isOpen={isLogoutModalOpen}
