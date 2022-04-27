@@ -1,0 +1,11 @@
+.customTextArea {
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px;
+    resize: none;
+    overflow: auto;
+    width: 100%;
+    min-height: 70px;
+}

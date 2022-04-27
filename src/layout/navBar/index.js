@@ -1,10 +1,10 @@
 import './style.css'
 import React from 'react'
-import Modal from 'react-modal/lib/components/Modal'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import store from '../../redux/store';
 import { userLogout } from '../../actions/actions';
+import LogoutModal from '../../modals/logoutModal';
 
 function NavBar() {
 
@@ -20,15 +20,6 @@ function NavBar() {
         store.dispatch(userLogout())
         navigate("/signup")
     }
-    
-    const modalStyle = {
-        content: { 
-            height: 'fit-content',
-            maxWidth: '500px',
-            marginLeft: 'auto',
-            marginRight: 'auto'
-        }
-    }
 
     return (
         <nav>
@@ -39,18 +30,12 @@ function NavBar() {
             <div className="logoutButton">
                 <button onClick={handleEditModal}>Logout</button>
             </div>
-            <Modal isOpen={isLogoutModalOpen}
+            <LogoutModal 
+                isOpen={isLogoutModalOpen}
                 onRequestClose={handleEditModal}
-                style={modalStyle}>
-                <div className="modal">
-                    <h1>Logout</h1>
-                    <p>Are you sure you want to logout?</p>
-                    <div className="buttons">
-                        <button onClick={handleEditModal}>CANCEL</button>
-                        <button onClick={handleLogout}>LOGOUT</button>
-                    </div>
-                </div>
-            </Modal>
+                onClickCancel={handleEditModal}
+                onClickConfirm={handleLogout}
+            />
         </nav>
     )
 }

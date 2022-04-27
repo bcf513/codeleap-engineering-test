@@ -1,9 +1,8 @@
-import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
 import store from '../../redux/store';
 
-function ProtectedRoute() {
+function MainProtected() {
   return store.getState().loggedIn ? <Outlet /> : <Navigate to='/signup' />
 }
 
-export default ProtectedRoute
+export default MainProtected

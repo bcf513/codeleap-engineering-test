@@ -3,9 +3,10 @@ import CreatePost from '../../components/createPost';
 import UserPost from '../../components/userPost';
 import NavBar from '../../layout/navBar';
 import { useState } from 'react';
-import Modal from 'react-modal';
 import store from '../../redux/store';
 import { editPost, deletePost } from '../../actions/actions';
+import DeletePostModal from '../../modals/deletePostModal';
+import EditPostModal from '../../modals/editPostModal';
 
 function MainScreen() {
 
@@ -13,63 +14,57 @@ function MainScreen() {
     const [isEditModalOpen, setisEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
     const [currentPost, setcurrentPost] = useState(undefined);
-    const [editTitle, seteditTitle] = useState('');
-    const [editContent, seteditContent] = useState('');
+    const [postToEdit, setpostToEdit] = useState({title: '', content: ''});
 
-    const handleEditPost = () => {
+    const editUserpost = (postData) => {
+
+        const { title, content } = postData
+
         const post = {
             id: currentPost,
-            title: editTitle,
-            username: 'Bruno',
+            title: title,
+            username: store.getState().loggedIn,
             created_datetime: Date.now(),
-            content: editContent
+            content: content
         }
         store.dispatch(editPost(post))
         const storePostList = [...store.getState().postList]
         const postListSorted = [...storePostList.sort((a, b) => b.created_datetime - a.created_datetime)]
         setvisiblePosts(postListSorted)
+
         setisEditModalOpen(false)
+
     }
 
-    const handleDeletePost = () => {
+    const deleteUserpost = () => {
+
         store.dispatch(deletePost(currentPost))
         setvisiblePosts([...store.getState().postList])
+
         setisDeleteModalOpen(false)
+        
     }
 
-    const handleEditModal = (id) => {
+    const handleEditModal = id => {
         setisEditModalOpen(isEditModalOpen ? false : true)
         if (!isEditModalOpen) {
             const post = visiblePosts.find(post => post.id === id)
-            seteditTitle(post.title)
-            seteditContent(post.content)
+            const { title, content } = post
+            setpostToEdit({ title, content })
             setcurrentPost(id)
         }
     }
 
-    const handleDeleteModal = (id) => {
+    const handleDeleteModal = id => {
+
         setisDeleteModalOpen(isDeleteModalOpen ? false : true)
         if (!isDeleteModalOpen) setcurrentPost(id)
-    }
-
-    const modalStyle = {
-        content: { 
-            height: 'fit-content',
-            maxWidth: '500px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            borderRadius: '10px',
-            alignSelf: 'center'
-        },
-        overlay: {
-            zIndex: 1000
-        }
 
     }
 
     return (
         <main>
-                <NavBar />
+            <NavBar/>
             <div className='mainScreen'>
                 <CreatePost currentUserName={store.getState().loggedIn} 
                     setvisiblePosts={setvisiblePosts}/>
@@ -79,47 +74,23 @@ function MainScreen() {
                             currentUserName={store.getState().loggedIn}
                             handleEditModal={handleEditModal}
                             handleDeleteModal={handleDeleteModal}
-                        />)
+                        />
+                    )
                 }
-                <Modal isOpen={isEditModalOpen}
+                <EditPostModal 
+                    isOpen={isEditModalOpen}
                     onRequestClose={handleEditModal}
-                    style={modalStyle}>
-                    <div className="modal">
-                        <h1>Edit item</h1>
-                        <div className="textbox">
-                            <p>Title</p>
-                            <input type="text" 
-                                placeholder='Hello World'
-                                onChange={e => seteditTitle(e.target.value)}
-                                defaultValue={editTitle}
-                            />
-                        </div>
-                        <div className="textbox">
-                            <p>Content</p> 
-                            <textarea
-                                placeholder='Content Here'
-                                onChange={e => seteditContent(e.target.value)}
-                                defaultValue={editContent}
-                            />
-                        </div>
-                        <div className="buttons">
-                            <button onClick={handleEditModal}>CANCEL</button>
-                            <button onClick={handleEditPost}>OK</button>
-                        </div>
-                    </div>
-                </Modal>
-                <Modal isOpen={isDeleteModalOpen}
+                    onClickCancel={handleEditModal}
+                    onSubmit={editUserpost}
+                    post={postToEdit}
+                    setPost={setpostToEdit}
+                />
+                <DeletePostModal 
+                    isOpen={isDeleteModalOpen}
                     onRequestClose={handleDeleteModal}
-                    style={modalStyle}>
-                    <div className="modal">
-                        <h1>Delete item</h1>
-                        <p>Are you sure you want to delete this item?</p>
-                        <div className="buttons">
-                            <button onClick={handleDeleteModal}>CANCEL</button>
-                            <button onClick={handleDeletePost}>OK</button>
-                        </div>
-                    </div>
-                </Modal>
+                    onClickCancel={handleDeleteModal}
+                    onClickConfirm={deleteUserpost}
+                />
             </div>
         </main>
     )

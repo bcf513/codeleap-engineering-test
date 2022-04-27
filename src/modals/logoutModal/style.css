@@ -1,0 +1,21 @@
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.modal h1, .modal p {
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: 0;  
+}
+
+.buttons button {
+    height: 30px;
+}

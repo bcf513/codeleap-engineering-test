@@ -11,25 +11,35 @@ function SignUp() {
 
     const [usernameString, setusernameString] = useState('');
 
+    const handleSubmit = e => {
+        
+        e.preventDefault()
+        handleLogin()
+
+    }
+
     const handleLogin = () => {
+        
         store.dispatch(userLogin(usernameString))
         navigate("/main")
     }
 
     return (
         <div className="signUpPage">
-            <div className='signUpExternalBox'>
+            <form onSubmit={handleSubmit}
+                className='signUpExternalBox'>
                 <h1>Welcome to CodeLeap network!</h1>
-                <p>Please enter your username:</p>
-                <input type="text" 
+                <label htmlFor='username'>Please enter your username:</label>
+                <input type="text"
+                    id='username' 
                     placeholder='Your username here'
                     onChange={e => setusernameString(e.target.value)}
-                />
+                    />
                 <CustomButton text='ENTER'
                     inputsToFill={[usernameString]}
-                    handleButtonClick={handleLogin}
+                    onClick={handleLogin}
                 />
-            </div>
+            </form>
         </div>
     )
 }

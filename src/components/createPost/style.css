@@ -15,7 +15,7 @@
     padding: 20px;
 }
 
-.createPost p, .createPost h2 {
+.createPost h2 {
     margin: 0;
 }
 
@@ -55,9 +55,4 @@
 
 .createPost input {
     min-height: 30px;
-}
-
-.createPost textarea {
-    font-family: inherit;
-    min-height: 60px;
 }

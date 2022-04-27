@@ -1,0 +1,56 @@
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal h1, .modal p {
+    margin: 0;
+}
+
+.modal h1 {
+    font-size: 1,5em;
+    font-weight: normal;
+}
+
+.modal input, .modal textarea {
+    border-color: rgb(182, 182, 182);
+    border-radius: 10px;
+    border-width: 1px;
+
+    box-sizing: border-box;
+
+    padding-left: 10px;
+
+    width: 100%;
+}
+
+.modal input {
+    min-height: 30px;
+}
+
+.modal textarea {
+    font-family: inherit;
+
+    min-height: 60px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+
+    margin-left: auto;
+    margin-right: 0;  
+}
+
+.buttons button {
+    background-color: white;
+
+    border-color: rgb(182, 182, 182);
+    border-radius: 5px;
+    border-width: 1px;
+
+    height: 30px;
+    min-width: 80px;
+}
