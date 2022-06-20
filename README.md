@@ -2,7 +2,7 @@ Link for test: codeleap-engineering-test-bcf513.vercel.app
 
 # What is this?
 
-A single test for a job opportunity for frontend junior developer. It was made in four days, and was quite a challenge, since some of the tools in this project I've never used before, and had to learn the basics on the fly... but it was worth it!
+A single test for a job opportunity as frontend junior developer. It was made in four days, and was quite a challenge, since some of the tools in this project I've never used before, and had to learn the basics on the fly... but it was worth it!
 
 ## How it works?
 
